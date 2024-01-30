@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './pages/Home/Home.jsx';
+//import User from './pages/User'; //asked for user data check from user/:id
+
+/*Asked :
+/user/:id/activity
+/user/:id/average-sessions
+/user/:id/performance
+*/
+
+//test with nested rout like so
+//import Activity from './pages/Activity';
+//import Performance from './pages/Performance';
+/* 
+<Route path="user/:id/" element={<User />}>
+      <Route path="activity" element={<Activity />} />
+      <Route path="performance" element={<Performance />} />
+</Route> 
+                    */
+
+/* not implemented
+//import About from './pages/Profil';
+//import Logement from './pages/settings';
+//import Logement from './pages/community'; 
+*/
+
+//maybe
+//import NoMatch from './pages/Error';
+
+import Header from './components/header/Header.jsx';
+
+export default function App() {
+    return (
+        <div>
+            <Router>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
-
-export default App;

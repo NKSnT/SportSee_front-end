@@ -1,0 +1,32 @@
+.header_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    background-color: #020203;
+}
+.header_container {
+    /* width: 1400px; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 30px;
+    height: 90px;
+}
+.header_container ul {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.header_container li {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    font-weight: 500;
+}
+.header_logo {
+    width: 178px;
+    flex-shrink: 1;
+}

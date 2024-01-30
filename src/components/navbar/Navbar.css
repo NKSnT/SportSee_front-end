@@ -1,0 +1,34 @@
+.navbar_container {
+    display: flex;
+    justify-content: center;
+
+    width: 117px;
+    height: calc(100vh - 90px);
+    flex-direction: column;
+
+    background-color: #020203;
+}
+.navbar_container ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+
+    height: 316px;
+    flex-direction: column;
+}
+.navbar_container li {
+    height: 64px;
+}
+.navbar_container p {
+    color: white;
+    font-size: 12px;
+
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+    width: fit-content;
+    align-self: center;
+    position: absolute;
+    bottom: 5%;
+}

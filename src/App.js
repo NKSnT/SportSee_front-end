@@ -38,6 +38,11 @@ export default function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="user/:id/" element={<Home />}>
+                        {/*  <Route path="activity" element={<Activity />} />
+                        <Route path="average-sessions" element={<Average-sessions />} />
+                        <Route path="performance" element={<Performance />} /> */}
+                    </Route>
                 </Routes>
             </Router>
         </div>

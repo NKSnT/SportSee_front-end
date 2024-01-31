@@ -8,8 +8,9 @@ import { useEffect, useState } from 'react';
 //!! fetch need to be done externaly from components
 //!!
 
-import Navbar from '../../components/navbar/Navbar'; //need
-//import UsersData from '__mocks__/usersData';
+import Navbar from 'components/navbar/Navbar';
+import ActivityChart from 'components/charts/activity_chart/Activity_chart';
+import UsersData from '__mocks__/usersData';
 
 import './Home.css';
 
@@ -17,7 +18,6 @@ function Home() {
     const [isDataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState(false);
     const [usersData, setUsersData] = useState([]);
-    //console.log(usersData);
 
     useEffect(() => {
         async function fetchUsersData() {
@@ -25,12 +25,18 @@ function Home() {
                 //for backend fetch
                 /* const response = await fetch('../asstes/logements');
             const { infoLogementsData } = await response.json(); */
-                console.log('test');
+                console.log('test1');
                 //setUsersData(UsersData);
             } catch (err) {
                 console.log('===== error =====', err);
                 setError(true);
             } finally {
+                console.log(UsersData.USER_ACTIVITY);
+                /*  console.log(UsersData);
+                console.log(UsersData.USER_MAIN_DATA);
+                console.log(UsersData.USER_ACTIVITY);
+                console.log(UsersData.USER_AVERAGE_SESSIONS);
+                console.log(UsersData.USER_PERFORMANCE); */
                 setDataLoading(false);
             }
         }
@@ -52,8 +58,16 @@ function Home() {
             <div className="main_wrapper">
                 <Navbar></Navbar>
                 <div className="content_container">
+                    <div className="chart_test">
+                        <ActivityChart
+                            data={UsersData.USER_ACTIVITY[0].sessions}
+                            x_axis={'day'}
+                            y_axis={''}
+                        />
+                    </div>
+
                     <p>Nothing's here</p>
-                    {usersData.USER_ACTIVITY}
+                    {/* usersData.USER_ACTIVITY */}
                     {/*   {usersData.map((obj) => )} */}
                 </div>
             </div>
@@ -61,3 +75,11 @@ function Home() {
     }
 }
 export default Home;
+<a
+    class="yt-simple-endpoint style-scope yt-formatted-string"
+    spellcheck="false"
+    href="/@x0o0x_"
+    dir="auto">
+    {' '}
+    ‌{' '}
+</a>;

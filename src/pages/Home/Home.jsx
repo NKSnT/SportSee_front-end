@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 import Navbar from 'components/navbar/Navbar';
 import ActivityChart from 'components/charts/activity_chart/Activity_chart';
+import AverageSessionsChart from 'components/charts/averageSessions_chart/AverageSessions_chart';
 import UsersData from '__mocks__/usersData';
 
 import './Home.css';
@@ -31,7 +32,8 @@ function Home() {
                 console.log('===== error =====', err);
                 setError(true);
             } finally {
-                console.log(UsersData.USER_ACTIVITY);
+                console.log(UsersData);
+                console.log(UsersData.USER_AVERAGE_SESSIONS);
                 /*  console.log(UsersData);
                 console.log(UsersData.USER_MAIN_DATA);
                 console.log(UsersData.USER_ACTIVITY);
@@ -58,12 +60,23 @@ function Home() {
             <div className="main_wrapper">
                 <Navbar></Navbar>
                 <div className="content_container">
-                    <div className="chart_test">
+                    {/* <div className="chart_test">
                         <ActivityChart
                             data={UsersData.USER_ACTIVITY[0].sessions}
                             x_axis={'day'}
                             y_axis={''}
+                            data1={'kilogram'}
+                            data2={'calories'}
                         />
+                    </div> */}
+                    <div className="chart_test2">
+                        <AverageSessionsChart
+                            data={UsersData.USER_AVERAGE_SESSIONS[0].sessions}
+                            x_axis={'day'}
+                            y_axis={''}
+                            data1={'sessionLength'}
+                        />
+                        <div className="chart_backgound"> </div>
                     </div>
 
                     <p>Nothing's here</p>

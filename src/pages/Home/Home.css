@@ -8,10 +8,12 @@
     align-items: center;
     justify-content: center;
 }
+
 .chart_test {
     width: 835px;
     height: 320px;
 }
+
 .chart_test2 {
     width: 258px;
     height: 263px;
@@ -28,4 +30,11 @@
     position: relative;
     top: -263px;
     left: calc(258px - 75px);
+}
+
+.chart_test3 {
+    width: 258px;
+    height: 263px;
+    border-radius: 7px;
+    background-color: #282d30;
 }

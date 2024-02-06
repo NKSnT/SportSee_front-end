@@ -20,6 +20,9 @@
     background-color: #ff0000;
     border-radius: 7px;
 }
+.chart_test2 * {
+    z-index: 2;
+}
 .chart_backgound {
     border-radius: 0 7px 7px 0;
     background-color: #000000;
@@ -30,6 +33,7 @@
     position: relative;
     top: -263px;
     left: calc(258px - 75px);
+    z-index: 1;
 }
 
 .chart_test3 {
@@ -37,4 +41,8 @@
     height: 263px;
     border-radius: 7px;
     background-color: #282d30;
+}
+.chart_test4 {
+    width: 258px;
+    height: 263px;
 }

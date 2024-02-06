@@ -7,7 +7,8 @@ import {
     CartesianGrid, */
     Tooltip,
     /* Legend, */
-    ResponsiveContainer
+    ResponsiveContainer,
+    YAxis
 } from 'recharts';
 
 let week = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -16,6 +17,17 @@ const dayOfWeekTickFormatter = (tick) => {
     weekday = week[tick - 1];
     return weekday;
     //just give the day (monday, thusday)
+};
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label" style={{ color: 'white' }}>{` ${payload[0].value} min`}</p>
+                {/*  <p className="desc">Anything you want can be displayed here.</p> */}
+            </div>
+        );
+    }
+    return null;
 };
 
 export default function AverageSessions_chart(props) {
@@ -40,7 +52,8 @@ export default function AverageSessions_chart(props) {
                     tickFormatter={dayOfWeekTickFormatter}
                     stroke="#FFFFFF"
                 />
-                <Tooltip />
+                {/* <YAxis dataKey={props.Y_axis} /> */}
+                <Tooltip content={<CustomTooltip />} cursor={false} />
                 <Line
                     type="monotone"
                     dataKey={props.data1}

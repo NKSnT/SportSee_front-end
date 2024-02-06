@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react';
 //!!
 
 import Navbar from 'components/navbar/Navbar';
-import ActivityChart from 'components/charts/activity_chart/Activity_chart';
-import AverageSessionsChart from 'components/charts/average_sessions_chart/AverageSessions_chart';
-import ActivityTypeChart from 'components/charts/activity_type_chart/ActivityType_chart';
+// import ActivityChart from 'components/charts/activity_chart/Activity_chart';
+// import AverageSessionsChart from 'components/charts/average_sessions_chart/AverageSessions_chart';
+import TodayScoreChart from 'components/charts/today_scrore_chart/TodayScore_chart';
+// import ActivityTypeChart from 'components/charts/activity_type_chart/ActivityType_chart';
 import UsersData from '__mocks__/usersData';
 
 import './Home.css';
@@ -43,7 +44,7 @@ function Home() {
     useEffect(() => {
         async function formatData() {
             try {
-                console.log(UsersData.USER_PERFORMANCE);
+                console.log(UsersData.USER_MAIN_DATA);
                 /*  console.log(UsersData);
                 console.log(UsersData.USER_MAIN_DATA);
                 console.log(UsersData.USER_ACTIVITY);
@@ -54,20 +55,10 @@ function Home() {
                     /*  console.log(DataToUse); */
 
                     const ActivityTypeData = DataToUse.USER_PERFORMANCE[0];
+                    /*  const Score = DataToUse.USER_PERFORMANCE[0]; */
 
                     function activityTypeFormat() {
                         /*  console.log(ActivityTypeData); */
-                        /* var obj = {};
-                        Object.defineProperty(obj, 'value', {
-                            //using Object.defineProperty() method of JavaScript object class
-                            value: 101,
-                            writable: false //configured writable property as false, and hence, the id property of object obj can't be changed now
-                        });
-                        Object.defineProperty(obj, 'type', {
-                            //using Object.defineProperty() method of JavaScript object class
-                            value: 101,
-                            writable: false //configured writable property as false, and hence, the id property of object obj can't be changed now
-                        }); */
                         Object.keys(ActivityTypeData.data).forEach((key) => {
                             Object.keys(ActivityTypeData.kind).forEach((key2) => {
                                 if (Number(key2) === ActivityTypeData.data[key].kind) {
@@ -75,16 +66,6 @@ function Home() {
                                 }
                             });
                         });
-
-                        /* const data1 = [];
-                        Object.keys(ActivityTypeData.data).forEach((key) => {
-                            data1.push(ActivityTypeData.data[key].value);
-                        });
-                        const axis1 = [];
-                        Object.keys(ActivityTypeData.kind).forEach((key) => {
-                            axis1.push(ActivityTypeData.kind[key]);
-                        });
-                        return { data1, axis1 }; */
                         return ActivityTypeData.data;
                     }
 
@@ -92,7 +73,7 @@ function Home() {
                 }
 
                 const activityTypeData2 = dataFormating().activityTypeFormat();
-                console.log(activityTypeData2);
+                /*  console.log(activityTypeData2); */
                 /*  console.table(activityTypeData2); */
                 setFormatedUsersData(activityTypeData2);
             } catch (err) {
@@ -106,6 +87,7 @@ function Home() {
     }, []);
 
     if (error) {
+        console.log(formatedUsersData);
     }
     if (isDataLoading) {
         return (
@@ -134,14 +116,23 @@ function Home() {
                         <AverageSessionsChart
                             data={UsersData.USER_AVERAGE_SESSIONS[0].sessions}
                             x_axis={'day'}
-                            y_axis={''}
+                            y_axis={'sessionLength'}
                             data1={'sessionLength'}
                         />
                         <div className="chart_backgound"> </div>
                     </div> */}
-                    <div className="chart_test3">
+                    {/*  // finished , data use is formated */}
+                    {/*   <div className="chart_test3">
                         <ActivityTypeChart
                             data={formatedUsersData}
+                            axis1={'kind'}
+                            y_axis={''}
+                            data1={'value'}
+                        />
+                    </div> */}
+                    <div className="chart_test4">
+                        <TodayScoreChart
+                            data={{ ScoreTest: UsersData.USER_MAIN_DATA[0].todayScore }}
                             axis1={'kind'}
                             y_axis={''}
                             data1={'value'}

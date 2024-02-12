@@ -7,8 +7,8 @@ import {
     CartesianGrid, */
     Tooltip,
     /* Legend, */
-    ResponsiveContainer,
-    YAxis
+    ResponsiveContainer
+    /* ,YAxis */
 } from 'recharts';
 
 let week = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -38,13 +38,14 @@ export default function AverageSessions_chart(props) {
                 height={100}
                 data={props.data}
                 margin={{
-                    top: 20,
+                    top: 100,
                     right: 0,
                     left: 0,
                     bottom: 20
                 }}
                 /* style={{ backgroundColor: '#FF0000' }} */
-            >
+                opacity={0.7}
+            >             
                 <XAxis
                     dataKey={props.x_axis}
                     /* allowDataOverflow={true} */ padding={{ left: 14, right: 15 }}
@@ -53,7 +54,7 @@ export default function AverageSessions_chart(props) {
                     stroke="#FFFFFF"
                 />
                 {/* <YAxis dataKey={props.Y_axis} /> */}
-                <Tooltip content={<CustomTooltip />} cursor={false} />
+                <Tooltip content={<CustomTooltip />} cursor={false} opacity={0.7} />
                 <Line
                     type="monotone"
                     dataKey={props.data1}
@@ -61,6 +62,18 @@ export default function AverageSessions_chart(props) {
                     strokeWidth={3}
                     dot={false}
                 />
+                <text
+                    x="15%"
+                    y="15%"
+                    style={{ fontSize: '15', fontWeight: '500', fill: '#FFFFFF' }}>
+                    Durée moyenne des
+                </text>
+                <text
+                    x="15%"
+                    y="25%"
+                    style={{ fontSize: '15', fontWeight: '500', fill: '#FFFFFF'}}>
+                    sessions
+                </text>                
             </LineChart>
         </ResponsiveContainer>
     );

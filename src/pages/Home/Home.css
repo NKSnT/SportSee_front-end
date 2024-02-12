@@ -12,18 +12,21 @@
 .chart_test {
     width: 835px;
     height: 320px;
+    background-color: #FBFBFB;
+    border-radius: 7px;
 }
 
 .chart_test2 {
     width: 258px;
     height: 263px;
     background-color: #ff0000;
+    /* background: transparent; */
     border-radius: 7px;
 }
 .chart_test2 * {
     z-index: 2;
 }
-.chart_backgound {
+.chart_test2_backgound {
     border-radius: 0 7px 7px 0;
     background-color: #000000;
     width: 75px;
@@ -45,4 +48,6 @@
 .chart_test4 {
     width: 258px;
     height: 263px;
+    background-color: #fbfbfb;
+    border-radius: 7px;
 }

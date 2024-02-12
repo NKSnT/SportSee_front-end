@@ -9,10 +9,10 @@ import { useEffect, useState } from 'react';
 //!!
 
 import Navbar from 'components/navbar/Navbar';
-// import ActivityChart from 'components/charts/activity_chart/Activity_chart';
-// import AverageSessionsChart from 'components/charts/average_sessions_chart/AverageSessions_chart';
+ import ActivityChart from 'components/charts/activity_chart/Activity_chart';
+import AverageSessionsChart from 'components/charts/average_sessions_chart/AverageSessions_chart';
 import TodayScoreChart from 'components/charts/today_scrore_chart/TodayScore_chart';
-// import ActivityTypeChart from 'components/charts/activity_type_chart/ActivityType_chart';
+import ActivityTypeChart from 'components/charts/activity_type_chart/ActivityType_chart';
 import UsersData from '__mocks__/usersData';
 
 import './Home.css';
@@ -42,9 +42,10 @@ function Home() {
     }, []);
 
     useEffect(() => {
+        // format need to be done after fetch
         async function formatData() {
             try {
-                console.log(UsersData.USER_MAIN_DATA);
+                console.log(UsersData.USER_MAIN_DATA[0]);
                 /*  console.log(UsersData);
                 console.log(UsersData.USER_MAIN_DATA);
                 console.log(UsersData.USER_ACTIVITY);
@@ -53,10 +54,12 @@ function Home() {
                 function dataFormating() {
                     const DataToUse = UsersData;
                     /*  console.log(DataToUse); */
-
+                    const dayScoreData = DataToUse.USER_MAIN_DATA[0].todayScore;
                     const ActivityTypeData = DataToUse.USER_PERFORMANCE[0];
                     /*  const Score = DataToUse.USER_PERFORMANCE[0]; */
-
+                    function dayScoreFormat() {
+                        return [{ todayScore: dayScoreData * 100 }];
+                    }
                     function activityTypeFormat() {
                         /*  console.log(ActivityTypeData); */
                         Object.keys(ActivityTypeData.data).forEach((key) => {
@@ -69,13 +72,18 @@ function Home() {
                         return ActivityTypeData.data;
                     }
 
-                    return { activityTypeFormat };
+                    return { activityTypeFormat, dayScoreFormat };
                 }
 
-                const activityTypeData2 = dataFormating().activityTypeFormat();
+                /*  const activityTypeData2 = dataFormating().activityTypeFormat(); */
                 /*  console.log(activityTypeData2); */
                 /*  console.table(activityTypeData2); */
-                setFormatedUsersData(activityTypeData2);
+                setFormatedUsersData({
+                    test: dataFormating().activityTypeFormat(),
+                    /*  todayScore: { score: dataFormating().dayScoreFormat() } */
+                    todayScore: dataFormating().dayScoreFormat()
+                });
+                /* setFormatedUsersData(activityTypeData2); */
             } catch (err) {
                 console.log('===== error =====', err);
                 setError(true);
@@ -99,11 +107,13 @@ function Home() {
             </div>
         );
     } else if (isDataFormated) {
+        console.log(formatedUsersData.todayScore);
+        /* console.log(Object.keys(formatedUsersData)); */
         return (
             <div className="main_wrapper">
                 <Navbar></Navbar>
                 <div className="content_container">
-                    {/* <div className="chart_test">
+                    <div className="chart_test">
                         <ActivityChart
                             data={UsersData.USER_ACTIVITY[0].sessions}
                             x_axis={'day'}
@@ -111,32 +121,26 @@ function Home() {
                             data1={'kilogram'}
                             data2={'calories'}
                         />
-                    </div> */}
-                    {/* <div className="chart_test2">
+                    </div>
+                    <div className="chart_test2">
                         <AverageSessionsChart
                             data={UsersData.USER_AVERAGE_SESSIONS[0].sessions}
                             x_axis={'day'}
                             y_axis={'sessionLength'}
                             data1={'sessionLength'}
                         />
-                        <div className="chart_backgound"> </div>
-                    </div> */}
+                        <div className="chart_test2_backgound"> </div>
+                    </div>
                     {/*  // finished , data use is formated */}
-                    {/*   <div className="chart_test3">
+                    <div className="chart_test3">
                         <ActivityTypeChart
-                            data={formatedUsersData}
-                            axis1={'kind'}
-                            y_axis={''}
+                            data={formatedUsersData.test}
                             data1={'value'}
+                            axis1={'kind'}
                         />
-                    </div> */}
+                    </div>
                     <div className="chart_test4">
-                        <TodayScoreChart
-                            data={{ ScoreTest: UsersData.USER_MAIN_DATA[0].todayScore }}
-                            axis1={'kind'}
-                            y_axis={''}
-                            data1={'value'}
-                        />
+                        <TodayScoreChart data={formatedUsersData.todayScore} axis1={'todayScore'} />
                     </div>
 
                     {/* <p>Nothing's here</p> */}

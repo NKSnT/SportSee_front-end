@@ -82,7 +82,6 @@ const CustomLabel = (props) => {
 };
 
 export default function TodayScore_chart(props) {
-    console.log(props.data);
     return (
         <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart

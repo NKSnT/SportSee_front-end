@@ -37,7 +37,7 @@ export default function App() {
             <Router>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/user/:id" element={<Home />} />
                     {/*  <Route path="user/:id/" element={<Home />}>
                         <Route path="activity" element={<Activity />} />
                         <Route path="average-sessions" element={<Average-sessions />} />

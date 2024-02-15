@@ -15,3 +15,6 @@ ul {
 * {
     box-sizing: border-box;
 }
+p, h1 {
+    margin: 0px;
+ } 

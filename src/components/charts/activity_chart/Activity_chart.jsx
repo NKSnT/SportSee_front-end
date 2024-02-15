@@ -28,9 +28,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     }
     return null;
 };
-export default function Activity_chart(props) {
-    //console.log(props.data[0]);
-    //console.log(props.x_axis);
+export default function Activity_chart(props) {  
 
     return (
         <ResponsiveContainer width="100%" height="100%">
@@ -57,10 +55,9 @@ export default function Activity_chart(props) {
                         fill: '#20253A',
                         fontFamily: 'Roboto'
                     }}
-                    width={200}
-                    scaleToFit={true}
+                    width={200}                    
                     textAnchor="middle"
-                    verticalAnchor="middle">
+                    >
                     Activité quotidienne
                 </text>
                 <CartesianGrid strokeDasharray="3 3"  vertical={false}/>

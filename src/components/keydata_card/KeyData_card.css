@@ -1,15 +1,19 @@
 .card_container{
-    width: 258px;
-    height: 124px;
+    width: 100%;
+   /*  max-width: 258; */
+    height: 12vh;
+    max-height: 124px;
     display: flex;
     flex-direction: row;
     background-color: #FBFBFB;
-    padding: 32px ;
+    /* padding: 32px ; */
+    padding: 1vw 1.25vw 1vw 1.5vw;
 }
 .cardInfo{
     display: flex;
     flex-direction: column;
-    margin-left: 24px;
+    justify-content: center;
+    margin-left:  1vw;
 }
 .cardInfo_count{
     font-weight: 700;

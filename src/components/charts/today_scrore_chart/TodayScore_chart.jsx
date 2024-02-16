@@ -21,7 +21,7 @@ const CustomLabel = (props) => {
                 stroke="url(#paint0_angular_2_154)"
                 strokeWidth="10"
             />
-            {/* 12 */}
+            {/* value% */}
             <text
                 x="45%"
                 y="45%"

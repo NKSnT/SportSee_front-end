@@ -7,44 +7,52 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-left: 117px;
 }
 .content_container{
     flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-around;   
-    margin-top: 50px;
+    margin-top: 4vh;
 
     /* align-items: center; */
     /* justify-content: center; */
     /* padding: 80px 100px 0 100px; */
 }
 .charts_container{
-    width: 835px;    
+    width: 62.5vw;
+    /* max-width: 835px; */
+    /* width: 835px;   */  
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+   /*  justify-content: space-between; */
+    justify-content: space-around;
     /* margin: 0 40px 0 0; */
 }
-.chart_test {
-    width: 835px;
+.chart_1 {   
+    /* width: 835px; */
+    width: 100%;
+   /*  max-width: 835px; */
     height: 320px;
     background-color: #FBFBFB;
-    border-radius: 7px;
+    border-radius: 7px; 
+    margin-bottom: 25px;
 }
 
-.chart_test2 {
+.chart_2 {
     width: 258px;
     height: 263px;
     background-color: #ff0000;
     /* background: transparent; */
     border-radius: 7px;
+    margin-bottom: 30px;
 }
-.chart_test2 * {
+.chart_2 * {
     z-index: 2;
 }
-.chart_test2_backgound {
+.chart_2_backgound {
     border-radius: 0 7px 7px 0;
     background-color: #000000;
     width: 75px;
@@ -57,25 +65,31 @@
     z-index: 1;
 }
 
-.chart_test3 {
+.chart_3 {
+   /*  width: 15vw;
+    height: 15vw; */
+
+
     width: 258px;
     height: 263px;
     border-radius: 7px;
     background-color: #282d30;
+    margin-bottom: 30px;
 }
-.chart_test4 {
+.chart_4 {
     width: 258px;
     height: 263px;
     background-color: #fbfbfb;
     border-radius: 7px;
+    margin-bottom: 30px;
 }
 .keyInfo_container{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 4vh;
 }
 .banner{
-    margin: 50px 0 10px 125px; 
+    margin: 2.75vw 0 10px 5.5vw; 
 }
 .banner p{
     font-size: 18px;
@@ -89,3 +103,11 @@
 .welcome span{    
     color: #FF0101;
 }
+.keyInfo_container{
+max-width: 258;
+}
+/* @media (max-width: px) {
+    p, a {
+         font-size: 12px;          
+    }  
+  } */

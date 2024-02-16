@@ -37,12 +37,13 @@ export default function Activity_chart(props) {
                 height={300}
                 data={props.data} //data <= ex const data =[{},{}]
                 barCategoryGap={35}
-                barGap={15}
+                barGap={7.5}
+              /*barGap={20}*/
                 margin={{
-                    top: 10,
+                    top: 25,
                     right: 30,
-                    left: 20,
-                    bottom: 5
+                    left: 30,
+                    bottom: 20
                 }}>
                 <text
                     x="10%"
@@ -62,7 +63,7 @@ export default function Activity_chart(props) {
                 </text>
                 <CartesianGrid strokeDasharray="3 3"  vertical={false}/>
                 <XAxis
-                    /* dataKey={props.data} */ dataKey={props.x_axis}
+                    dataKey={props.x_axis}
                     tickFormatter={dayTickFormatter}
                 />
                 <XAxis
@@ -89,8 +90,9 @@ export default function Activity_chart(props) {
                     fill="#282D30" //color first bare
                     /*  activeBar={<Rectangle stroke="blue" />} //on hover */
                     yAxisId="right"
+                    barSize={10}
                 />
-                <Bar dataKey={props.data2} radius={[20, 20, 0, 0]} fill="#E60000" yAxisId="left"/>
+                <Bar  barSize={10} dataKey={props.data2} radius={[20, 20, 0, 0]} fill="#E60000" yAxisId="left"/>
             </BarChart>
         </ResponsiveContainer>
     );

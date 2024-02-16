@@ -28,15 +28,12 @@ export default function ActivityType_chart(props) {
                 <PolarAngleAxis
                     dataKey={props.axis1}
                     stroke="#FFFFFF"
-                    fontSize={12}
-                    /* axisLine={false} */
-                    axisLine={false} // dosn't work
+                    fontSize={12}                 
+                    axisLine={false} 
                 />
                 {/* <PolarRadiusAxis /> */}
-                <Radar
-                    /*  name="Mike" */
-                    dataKey={props.data1}
-                    /* stroke="#FFFFFF" */
+                <Radar                    
+                    dataKey={props.data1}                   
                     fill="#FF0101B2"
                     fillOpacity={0.7}
                 />

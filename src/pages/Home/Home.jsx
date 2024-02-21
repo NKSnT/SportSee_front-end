@@ -16,9 +16,11 @@ import ActivityTypeChart from 'components/charts/activity_type_chart/ActivityTyp
 import KeyDataCard from 'components/keydata_card/KeyData_card';
 
 import FormatData from 'dataFormating'
+//import FetchData from 'fetching'
 
 import './Home.css';
-
+import FetchData from 'fetching';
+import  getMockedUser from '__mocks__/usersData'
 
 
 function Home() {
@@ -28,31 +30,17 @@ function Home() {
     const [isDataFormated, setDataFormated] = useState(false);
     const [error, setError] = useState(false);
     const [formatedUsersData, setFormatedUsersData] = useState([]);
-
-    //let UserData2 = undefined
+    const [ismocked, setMocked] = useState(true);
+    
+    
     
     useEffect(() => {
         async function fetchUsersData() {   
             let UserData = []         
-            try {              
-            const response1 =  await fetch(`http://localhost:3000/user/${params.id}`)
-            const UserData1  = await response1.json(); 
-            const response2 =  await fetch(`http://localhost:3000/user/${params.id}/activity`)
-            const UserData2 =    await response2.json() 
-            const response3 =  await fetch(`http://localhost:3000/user/${params.id}/average-sessions`)
-            const UserData3 =    await response3.json() 
-            const response4 =  await fetch(`http://localhost:3000/user/${params.id}/performance`)
-            const UserData4 =    await response4.json() 
-            //console.log("Téléchargement terminé", response);
-            if (!response1.ok) {
-                // make the promise be rejected if we didn't get a 2xx response             
-                throw new Error(response1.status + ", unexpected user id");
-            }          
-             UserData = [UserData1,UserData2,UserData3,UserData4]                 
-            } catch (err) {                
-                console.log('EXCEPTION: ', err);                
-                setError(true);               
-            } finally{
+            try {                              
+                ismocked ?  UserData = getMockedUser(params.id) :  UserData = await FetchData(params.id)  
+           
+                if ( UserData) {
                 setFormatedUsersData({                                   
                     userInfos: FormatData(UserData).userInfoDataFormat(),                    
                     keyData: FormatData(UserData).mainDataFormat(),
@@ -61,13 +49,18 @@ function Home() {
                     userAvgSession : FormatData(UserData).userAvgSessionFormat(),
                     performance: FormatData(UserData).activityTypeFormat()
                     //...
-                });     
-                setDataFormated(true);
-                setDataLoading(false);   
+                });              
+            }    
+         } catch (err) {                
+                console.log('EXCEPTION: ', err);                
+                setError(true);                             
+            } finally{               
+                    setDataFormated(true);
+                    setDataLoading(false);    
             }
         } 
         fetchUsersData()  
-    }, [params.id]);
+    }, [params.id, ismocked]);
 
       /*  useEffect(()=>{   
         console.log('is data formated : '+ isDataFormated)   

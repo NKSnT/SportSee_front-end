@@ -1,6 +1,6 @@
-{
-    "USER_MAIN_DATA": [
-        {
+ const mockedUser = [[
+    {
+        "data": {
             "id": 12,
             "userInfos": {
                 "firstName": "Karl",
@@ -14,25 +14,10 @@
                 "carbohydrateCount": 290,
                 "lipidCount": 50
             }
-        },
-        {
-            "id": 18,
-            "userInfos": {
-                "firstName": "Cecilia",
-                "lastName": "Ratorez",
-                "age": 34
-            },
-            "score": 0.3,
-            "keyData": {
-                "calorieCount": 2500,
-                "proteinCount": 90,
-                "carbohydrateCount": 150,
-                "lipidCount": 120
-            }
         }
-    ],
-    "USER_ACTIVITY": [
-        {
+    },
+    {
+        "data": {
             "userId": 12,
             "sessions": [
                 {
@@ -71,8 +56,102 @@
                     "calories": 390
                 }
             ]
-        },
-        {
+        }
+    },
+    {
+        "data": {
+            "userId": 12,
+            "sessions": [
+                {
+                    "day": 1,
+                    "sessionLength": 30
+                },
+                {
+                    "day": 2,
+                    "sessionLength": 23
+                },
+                {
+                    "day": 3,
+                    "sessionLength": 45
+                },
+                {
+                    "day": 4,
+                    "sessionLength": 50
+                },
+                {
+                    "day": 5,
+                    "sessionLength": 0
+                },
+                {
+                    "day": 6,
+                    "sessionLength": 0
+                },
+                {
+                    "day": 7,
+                    "sessionLength": 60
+                }
+            ]
+        }
+    },
+    {
+        "data": {
+            "userId": 12,
+            "kind": {
+                "1": "cardio",
+                "2": "energy",
+                "3": "endurance",
+                "4": "strength",
+                "5": "speed",
+                "6": "intensity"
+            },
+            "data": [
+                {
+                    "value": 80,
+                    "kind": 1
+                },
+                {
+                    "value": 120,
+                    "kind": 2
+                },
+                {
+                    "value": 140,
+                    "kind": 3
+                },
+                {
+                    "value": 50,
+                    "kind": 4
+                },
+                {
+                    "value": 200,
+                    "kind": 5
+                },
+                {
+                    "value": 90,
+                    "kind": 6
+                }
+            ]
+        }
+    }
+],[
+    {
+        "data": {
+            "id": 18,
+            "userInfos": {
+                "firstName": "Cecilia",
+                "lastName": "Ratorez",
+                "age": 34
+            },
+            "score": 0.3,
+            "keyData": {
+                "calorieCount": 2500,
+                "proteinCount": 90,
+                "carbohydrateCount": 150,
+                "lipidCount": 120
+            }
+        }
+    },
+    {
+        "data": {
             "userId": 18,
             "sessions": [
                 {
@@ -112,42 +191,9 @@
                 }
             ]
         }
-    ],
-    "USER_AVERAGE_SESSIONS": [
-        {
-            "userId": 12,
-            "sessions": [
-                {
-                    "day": 1,
-                    "sessionLength": 30
-                },
-                {
-                    "day": 2,
-                    "sessionLength": 23
-                },
-                {
-                    "day": 3,
-                    "sessionLength": 45
-                },
-                {
-                    "day": 4,
-                    "sessionLength": 50
-                },
-                {
-                    "day": 5,
-                    "sessionLength": 0
-                },
-                {
-                    "day": 6,
-                    "sessionLength": 0
-                },
-                {
-                    "day": 7,
-                    "sessionLength": 60
-                }
-            ]
-        },
-        {
+    },
+    {
+        "data": {
             "userId": 18,
             "sessions": [
                 {
@@ -180,46 +226,9 @@
                 }
             ]
         }
-    ],
-    "USER_PERFORMANCE": [
-        {
-            "userId": 12,
-            "kind": {
-                "1": "cardio",
-                "2": "energy",
-                "3": "endurance",
-                "4": "strength",
-                "5": "speed",
-                "6": "intensity"
-            },
-            "data": [
-                {
-                    "value": 80,
-                    "kind": 1
-                },
-                {
-                    "value": 120,
-                    "kind": 2
-                },
-                {
-                    "value": 140,
-                    "kind": 3
-                },
-                {
-                    "value": 50,
-                    "kind": 4
-                },
-                {
-                    "value": 200,
-                    "kind": 5
-                },
-                {
-                    "value": 90,
-                    "kind": 6
-                }
-            ]
-        },
-        {
+    },
+    {
+        "data": {
             "userId": 18,
             "kind": {
                 "1": "cardio",
@@ -232,29 +241,42 @@
             "data": [
                 {
                     "value": 200,
-                    "kind": 1
+                    "kind": "cardio"
                 },
                 {
                     "value": 240,
-                    "kind": 2
+                    "kind": "energy"
                 },
                 {
                     "value": 80,
-                    "kind": 3
+                    "kind": "endurance"
                 },
                 {
                     "value": 80,
-                    "kind": 4
+                    "kind": "strength"
                 },
                 {
                     "value": 220,
-                    "kind": 5
+                    "kind": "speed"
                 },
                 {
                     "value": 110,
-                    "kind": 6
+                    "kind": "intensity"
                 }
             ]
         }
-    ]
+    }
+]]
+
+
+export default function getMockedUser (id){     
+  if (id === '12'){ 
+    return mockedUser[0]
+  }
+  else if (id === '18'){
+    return mockedUser[1]
+  } else {
+    throw new Error('user is not mocked');  
+  }
 }
+

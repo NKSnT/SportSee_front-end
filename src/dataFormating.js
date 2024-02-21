@@ -8,9 +8,9 @@ export default function FormatData(UsersData) {
                                 return propertyName.toLowerCase().includes('score')                                                               
                          })
                     ];  
-                    const activityData =  UsersData[1].data.sessions
+                    const activityData =  UsersData[1].data.sessions                    
                     const averageSessionData = UsersData[2].data.sessions
-                    const ActivityTypeData = UsersData[3].data   
+                    const ActivityTypeData = UsersData[3].data                    
 
     function userInfoDataFormat() {
         //console.log('ok1')
@@ -29,15 +29,15 @@ export default function FormatData(UsersData) {
         return activityData;
     }
     function activityTypeFormat() {
-        //console.log('ok5')
-        //  console.log(ActivityTypeData);
+        //console.log('ok5')   
+       // console.log(ActivityTypeData);      
         Object.keys(ActivityTypeData.data).forEach((key) => {
             Object.keys(ActivityTypeData.kind).forEach((key2) => {
                 if (Number(key2) === ActivityTypeData.data[key].kind) {
                     ActivityTypeData.data[key].kind = ActivityTypeData.kind[key2];
                 }
             });
-        });
+        });      
         return ActivityTypeData.data;
     }
     function userAvgSessionFormat() {
